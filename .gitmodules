@@ -1,0 +1,3 @@
+[submodule "pyFTT"]
+	path = pyFTT
+	url = https://github.com/ageorge95/pyFileTorrentTransfer
