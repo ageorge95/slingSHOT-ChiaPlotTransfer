@@ -17,6 +17,7 @@ class pyCPT(pyFTT):
                  qbPort : int = 8085,
                  qbPassword : str = 'admin',
                  qbUsername : str = 'adminadmin',
+                 max_plots : int = None
                  ):
 
         super(pyCPT, self).__init__(wd_path = wd_path,
@@ -30,8 +31,10 @@ class pyCPT(pyFTT):
         self.plotting_full_CLI_command = plotting_full_CLI_command
         self.plots_cache = plots_cache
         self.plotting_wd = plotting_wd
+        self.max_plots = max_plots
 
     def thread_monitor_plotter(self):
+        current_plot = 0
         while True:
             # check existing plots addition to the transfer list
             for potential_file in listdir(self.plotting_wd):
@@ -46,5 +49,9 @@ class pyCPT(pyFTT):
             else:
                 self._log.info('Cache free for more entries. Begining plotting ...')
                 call(self.plotting_full_CLI_command)
+                current_plot += 1
 
             sleep(5)
+
+            if (self.max_plots and current_plot == self.max_plots) or not self.max_plots:
+                break
