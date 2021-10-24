@@ -23,7 +23,12 @@ If you want fast support (faster than with github issues that is), join our Disc
 
 ## WINDOWS usage - instructions
 
-1. Have a python distro installed on your system. I recommend python 3.9.x x64bit
+1. Have 
+   - a python distro installed on your system. I recommend python 3.9.x x64bit
+   - the latest version of qBittorrent
+   
+2. Configure the qBittorrent web server (by default the scripts will use admin:adminadmin @ localhost:8085)
+   - if you have other credentials, you can overwrite them when constructing the pyCPT object
 
 2. Use the appropriate START_x.py file, on the receiver and the sender
 
