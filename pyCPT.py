@@ -53,5 +53,6 @@ class pyCPT(pyFTT):
 
             sleep(5)
 
-            if (self.max_plots and current_plot == self.max_plots) or not self.max_plots:
+            if self.max_plots and current_plot == self.max_plots:
+                self._log.info('Reached the max limit of plots. Exiting ...')
                 break
