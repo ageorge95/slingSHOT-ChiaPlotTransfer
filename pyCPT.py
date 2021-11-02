@@ -47,12 +47,12 @@ class pyCPT(pyFTT):
             if len(list(filter(lambda x: x.endswith('.plot'), listdir(self.plotting_wd)))) >= self.plots_cache:
                 self._log.info('Cache already full. Waiting for ongoing transfers ...')
             else:
-                self._log.info('Cache free for more entries. Begining plotting ...')
+                if self.max_plots and current_plot == self.max_plots:
+                    self._log.info('Reached the max limit of plots. Not plotting anymore ...')
+                else:
+                    self._log.info('Cache free for more entries. Beginning plotting ...')
                 call(self.plotting_full_CLI_command)
                 current_plot += 1
 
             sleep(5)
 
-            if self.max_plots and current_plot == self.max_plots:
-                self._log.info('Reached the max limit of plots. Exiting ...')
-                break
