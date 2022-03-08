@@ -44,7 +44,7 @@ class pyCPT():
                     self._log.info('Reached the max limit of plots. Not plotting anymore ...')
                 else:
                     self._log.info('Cache free for more entries. Beginning plotting ...')
-                call(self.plotting_full_CLI_command)
-                current_plot += 1
+                    call(self.plotting_full_CLI_command)
+                    current_plot += 1
 
             sleep(5)
